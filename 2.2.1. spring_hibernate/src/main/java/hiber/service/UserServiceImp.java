@@ -33,4 +33,9 @@ public class UserServiceImp implements UserService {
       return userDao.findUser(series, model);
    }
 
+   @Transactional
+   @Override
+   public void deleteAll() {
+      userDao.deleteAll();
+   }
 }

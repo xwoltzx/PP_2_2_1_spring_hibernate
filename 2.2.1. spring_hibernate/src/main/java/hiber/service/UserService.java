@@ -9,4 +9,5 @@ public interface UserService {
     void add(User user);
     List<User> listUsers();
     User findUser(Integer series, String model);
+    void deleteAll();
 }
