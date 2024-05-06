@@ -30,7 +30,8 @@ public class UserDaoImp implements UserDao {
    @Override
    @SuppressWarnings("unchecked")
    public User findUser(Integer series, String model) {
-      TypedQuery<User> query =sessionFactory.getCurrentSession().createQuery("SELECT u FROM User u JOIN Car c ON u.car.id = c.id WHERE c.series = :series AND c.model = :model", User.class);
+      //Отключение вывода SQL-запросов помешало исправлению N+1 проблемы
+       TypedQuery<User> query =sessionFactory.getCurrentSession().createQuery("SELECT u FROM User u JOIN FETCH Car c ON u.car.id = c.id WHERE c.series = :series AND c.model = :model", User.class);
       query.setParameter("series", series);
       query.setParameter("model", model);
       return query.getSingleResult();

@@ -19,7 +19,7 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   @OneToOne(targetEntity = Car.class, cascade = CascadeType.ALL)
+   @OneToOne(targetEntity = Car.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
    @JoinColumn(name = "car_id")
    private Car car;
 
